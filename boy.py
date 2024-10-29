@@ -97,7 +97,6 @@ class AutoRun:
     @staticmethod
     def enter(boy, e):
         boy.start_time = get_time()
-        pass
 
     @staticmethod
     def exit(boy, e):
@@ -119,7 +118,6 @@ class AutoRun:
 
         if get_time() - boy.start_time > 5:
             boy.state_machine.add_event(('TIME_OUT',0))
-        pass
 
     @staticmethod
     def draw(boy):
@@ -133,7 +131,6 @@ class AutoRun:
                 boy.frame * 100, 0, 100, 100,
                 boy.x, boy.y + 25, 200, 200
             )
-        pass
 
 
 class Boy:
