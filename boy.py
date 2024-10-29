@@ -104,10 +104,31 @@ class AutoRun:
 
     @staticmethod
     def do(boy):
+        boy.frame = (boy.frame + 1) % 8
+        boy.x += boy.face_dir * 10
+        if boy.x >= 750:
+            boy.face_dir = -1
+        elif boy.x <= 50:
+            boy.face_dir = 1
+
+        if boy.face_dir == 1:
+            boy.action = 3
+        elif boy.face_dir == -1:
+            boy.action = 2
         pass
 
     @staticmethod
     def draw(boy):
+        if boy.face_dir == 1:
+            boy.image.clip_draw(
+                boy.frame * 100, 100, 100, 100,
+                boy.x, boy.y + 25, 200, 200
+            )
+        elif boy.face_dir == -1:
+            boy.image.clip_draw(
+                boy.frame * 100, 0, 100, 100,
+                boy.x, boy.y + 25, 200, 200
+            )
         pass
 
 
