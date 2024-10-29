@@ -28,7 +28,7 @@ class Idle:
     @staticmethod
     def do(boy):
         boy.frame = (boy.frame + 1) % 8
-        if get_time() - boy.start_time > 1:
+        if get_time() - boy.start_time > 3:
             #이벤트 발생
             boy.state_machine.add_event(('TIME_OUT',0))
 
@@ -96,6 +96,7 @@ class Run:
 class AutoRun:
     @staticmethod
     def enter(boy, e):
+        boy.start_time = get_time()
         pass
 
     @staticmethod
@@ -115,6 +116,9 @@ class AutoRun:
             boy.action = 3
         elif boy.face_dir == -1:
             boy.action = 2
+
+        if get_time() - boy.start_time > 5:
+            boy.state_machine.add_event(('TIME_OUT',0))
         pass
 
     @staticmethod
